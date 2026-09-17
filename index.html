@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLUB KOM KOM - MOUVANCE PRESIDENTIELLE</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f0ebf8;
+      color: #202124;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 770px;
+    }
+
+    /* Style des cartes */
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #dadce0;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* En-tête principal */
+    .header-card {
+      border-top: 10px solid #673ab7; /* Bandeau violet supérieur */
+      position: relative;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .header-text h1 {
+      font-size: 24px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .header-text p.subtitle {
+      font-size: 13px;
+      color: #5f6368;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Logo en haut à droite */
+    .header-logo img {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #dadce0;
+      margin: 20px 0 15px 0;
+    }
+
+    .user-account {
+      font-size: 13px;
+      color: #5f6368;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .user-account a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .required-note {
+      color: #d93025;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    /* Champs de saisie */
+    .label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      display: block;
+      color: #202124;
+    }
+
+    .required {
+      color: #d93025;
+    }
+
+    .text-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding: 8px 0;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .text-input:focus {
+      border-bottom: 2px solid #673ab7;
+    }
+
+    /* Groupes d'options (Checkboxes & Radios) */
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: #202124;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    .option-item input[type="checkbox"],
+    .option-item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      accent-color: #673ab7;
+      cursor: pointer;
+    }
+
+    /* Actions bas de page */
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .btn-submit {
+      background-color: #673ab7;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: #512da8;
+    }
+
+    .btn-reset {
+      background: none;
+      border: none;
+      color: #673ab7;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-reset:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Message de confirmation masqué par défaut -->
+    <div id="confirmation-message" class="card header-card" style="display: none; text-align: center; padding: 40px 20px;">
+      <h2 style="color: #4CAF50; margin-bottom: 10px;">Inscription validée !</h2>
+      <p style="font-size: 1.1rem; color: #333;">Merci. Vos données ont bien été enregistrées.</p>
+    </div>
+
+    <!-- REMPLACEZ L'URL ACTION PAR VOTRE ENDPOINT FORMSPREE -->
+    <form id="inscription-form" action="https://formspree.io/f/xoevqkwr" method="POST">
+
+      <!-- Carte d'en-tête avec Logo en haut à droite -->
+      <div class="card header-card">
+        <div class="header-top">
+          <div class="header-text">
+            <h1>CLUB KOM KOM - MOUVANCE PRESIDENTIELLE</h1>
+            <p class="subtitle">FORMULAIRE D'INSCRIPTION ET D'AFFECTATION AUX COMMISSIONS</p>
+          </div>
+          
+          <div class="header-logo">
+            <img src="images/image3.jpg" alt="Logo KIIRAAY - Les Patriotes Républicains">
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ NOM -->
+      <div class="card">
+        <label class="label">NOM <span class="required">*</span></label>
+        <input type="text" name="nom" class="text-input" placeholder="Votre réponse" required>
+      </div>
+
+      <!-- Champ PRENOM -->
+      <div class="card">
+        <label class="label">PRENOM <span class="required">*</span></label>
+        <input type="text" name="prenom" class="text-input" placeholder="Votre réponse" required>
+      </div>
+
+      <!-- Champ EXPERTISE / COMPETENCES -->
+      <div class="card">
+        <label class="label">EXPERTISE / COMPETENCES <span class="required">*</span></label>
+        <input type="text" name="expertise" class="text-input" placeholder="Votre réponse" required>
+      </div>
+
+      <!-- Champ TELEPHONE -->
+      <div class="card">
+        <label class="label">TELEPHONE <span class="required">*</span></label>
+        <input type="tel" name="telephone" class="text-input" placeholder="Votre réponse" required>
+      </div>
+
+      <!-- Champ EMAIL -->
+      <div class="card">
+        <label class="label">EMAIL</label>
+        <input type="email" name="email" class="text-input" placeholder="Votre réponse">
+      </div>
+
+      <!-- Section COMMISSIONS -->
+      <div class="card">
+        <label class="label">COMMISSION <span class="required">*</span></label>
+        <div class="option-group">
+          <label class="option-item"><input type="checkbox" name="commissions" value="GOUVERNANCES ECONOMIQUE - MACRO-ECONOMIE ET FINANCES PUBLIQUES"> GOUVERNANCES ECONOMIQUE - MACRO-ECONOMIE ET FINANCES PUBLIQUES</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="FISCALITE - DOUANES & MOBILISATION DES RESSOURCES"> FISCALITE - DOUANES & MOBILISATION DES RESSOURCES</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="AGRICULTURE - ELEVAGE - SOUVERAINETE ALIMENTAIRE & DEVELOPPEMENT RURAL"> AGRICULTURE - ELEVAGE - SOUVERAINETE ALIMENTAIRE & DEVELOPPEMENT RURAL</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="INDUSTRIALISATION _ TRANSFORMATION PRODUCTIVE & COMPETITIVITE"> INDUSTRIALISATION _ TRANSFORMATION PRODUCTIVE & COMPETITIVITE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="COMMERCE _ INVESTISSEMENTS & INTEGRATION DES MARCHES"> COMMERCE _ INVESTISSEMENTS & INTEGRATION DES MARCHES</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="SECTEUR PRIVE - ENTREPRENEURIAT - PME & ECONOMIE SOCIALE"> SECTEUR PRIVE - ENTREPRENEURIAT - PME & ECONOMIE SOCIALE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="DIPLOMATIE ECONOMIQUE - DIASPORA - ET AFFAIRES ETRANGERE"> DIPLOMATIE ECONOMIQUE - DIASPORA - ET AFFAIRES ETRANGERE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="TRANSPORTS - LOGISTIQUES - ORGANISATION & MOBILITE"> TRANSPORTS - LOGISTIQUES - ORGANISATION & MOBILITE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="ECONOMIE MARITIME - PECHE ET ECONOMIE BLEUE"> ECONOMIE MARITIME - PECHE ET ECONOMIE BLEUE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="ENERGIES - MINES & INFRASTRUCTURES STRATEGIQUES"> ENERGIES - MINES & INFRASTRUCTURES STRATEGIQUES</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="ECONOMIE NUMERIQUE - INNOVATION & INTELLIGENCE ARTIFICIELLE"> ECONOMIE NUMERIQUE - INNOVATION & INTELLIGENCE ARTIFICIELLE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="EMPLOI - FORMATION PROFESSIONNELLE - EDUCATION - SPORTS & CAPITAL HUMAIN"> EMPLOI - FORMATION PROFESSIONNELLE - EDUCATION - SPORTS & CAPITAL HUMAIN</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="COUVERTURE SANITAIRE & SOUVERAINETE PHARMACEUTIQUE"> COUVERTURE SANITAIRE & SOUVERAINETE PHARMACEUTIQUE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="ENVIRONNEMENT - TRANSITION ECOLOGIQUE - RESILIENCE DES TERRITOIRES & DEVELOPPEMENT DURABLE"> ENVIRONNEMENT - TRANSITION ECOLOGIQUE - RESILIENCE DES TERRITOIRES & DEVELOPPEMENT DURABLE</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="ARTISANAT - TOURISME - CULTURE ET DEVELOPPEMENT TERRITORIAL"> ARTISANAT - TOURISME - CULTURE ET DEVELOPPEMENT TERRITORIAL</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="MARCHES - CONSOMMATION - PROTECTION DES CONSOMMATEURS"> MARCHES - CONSOMMATION - PROTECTION DES CONSOMMATEURS</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="COMMUNICATION DIGITALE - MEDIA & RAYONNEMENT"> COMMUNICATION DIGITALE - MEDIA & RAYONNEMENT</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="STATISTIQUES - PROSPECTIVES - SUIVI & EVALUATION"> STATISTIQUES - PROSPECTIVES - SUIVI & EVALUATION</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="VALIDATION SCIENTIFIQUE - JURIDIQUE & EXPERTISES"> VALIDATION SCIENTIFIQUE - JURIDIQUE & EXPERTISES</label>
+          <label class="option-item"><input type="checkbox" name="commissions" value="ORGANISATION & LOGISTIQUE (BUREAU DE COORDINATION)"> ORGANISATION & LOGISTIQUE (BUREAU DE COORDINATION)</label>
+        </div>
+      </div>
+
+      <!-- Section REGIONS -->
+      <div class="card">
+        <label class="label">REGION <span class="required">*</span></label>
+        <div class="option-group">
+          <label class="option-item"><input type="radio" name="region" value="Dakar" required> Dakar</label>
+          <label class="option-item"><input type="radio" name="region" value="Diourbel"> Diourbel</label>
+          <label class="option-item"><input type="radio" name="region" value="Fatick"> Fatick</label>
+          <label class="option-item"><input type="radio" name="region" value="Kaffrine"> Kaffrine</label>
+          <label class="option-item"><input type="radio" name="region" value="Kaolack"> Kaolack</label>
+          <label class="option-item"><input type="radio" name="region" value="Kédougou"> Kédougou</label>
+          <label class="option-item"><input type="radio" name="region" value="Kolda"> Kolda</label>
+          <label class="option-item"><input type="radio" name="region" value="Louga"> Louga</label>
+          <label class="option-item"><input type="radio" name="region" value="Matam"> Matam</label>
+          <label class="option-item"><input type="radio" name="region" value="Saint-Louis"> Saint-Louis</label>
+          <label class="option-item"><input type="radio" name="region" value="Sédhiou"> Sédhiou</label>
+          <label class="option-item"><input type="radio" name="region" value="Tambacounda"> Tambacounda</label>
+          <label class="option-item"><input type="radio" name="region" value="Thiès"> Thiès</label>
+          <label class="option-item"><input type="radio" name="region" value="Ziguinchor"> Ziguinchor</label>
+          <label class="option-item"><input type="radio" name="region" value="A L'ETRANGER"> A L'ETRANGER</label>
+        </div>
+      </div>
+
+      <!-- Boutons de soumission -->
+      <div class="actions">
+        <button type="submit" class="btn-submit" id="submit-btn">Envoyer</button>
+        <button type="reset" class="btn-reset">Effacer le formulaire</button>
+      </div>
+
+    </form>
+  </div>
+  
+  <script>
+    const form = document.getElementById('inscription-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Empêche le rechargement de la page
+
+      // Désactiver le bouton pendant l'envoi
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          // Masquer le formulaire et afficher le message de succès
+          form.style.display = 'none';
+          document.getElementById('confirmation-message').style.display = 'block';
+        } else {
+          alert("Une erreur s'est produite lors de la soumission. Veuillez réinstaller votre lien Formspree ou réessayer.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer';
+        }
+      } catch (error) {
+        alert("Erreur de connexion. Veuillez vérifier votre réseau.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer';
+      }
+    });
+  </script>
+
+</body>
+</html>
